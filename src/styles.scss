@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url("https://fonts.googleapis.com/css2?family=Arizonia&family=Urbanist:wght@100;200&display=swap");
+
+html,
+body {
+  height: 100%;
+  font-family: "Urbanist", sans-serif;
+  margin: 0;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+    font-family: "Urbanist", sans-serif;
+  }
+
+  p {
+    margin: 0;
+    font-family: "Urbanist", sans-serif;
+  }
+  a {
+    font-family: "Urbanist", sans-serif;
+    color: #1976d2;
+    text-decoration: none;
+    &:visited,
+    &:hover {
+      color: #5e6469;
+      text-decoration: none;
+    }
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+
+    img {
+      margin: 0 16px;
+    }
+  }
+
+  .content {
+    font-family: "Urbanist", sans-serif;
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+
+    .error {
+      width: 100%;
+      padding: 7px;
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+
+    .success {
+      width: 100%;
+      color: #000;
+      font-weight: 800;
+      padding: 7px;
+      background-color: #5fd1db;
+      margin-bottom: 7px;
+    }
+  }
+  .mat-grid-tile-content {
+    display: block;
+  }
+}
+
+.push {
+  .left {
+    width: 85%;
+    display: inline-block;
+    text-align: left;
+  }
+
+  .right {
+    width: 15%;
+    display: inline-block;
+    text-align: right;
+  }
+}
+
+.page-details-card {
+  padding: 0 !important;
+}

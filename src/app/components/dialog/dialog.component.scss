@@ -1,0 +1,74 @@
+.form-dialog {
+  text-align: center;
+  flex-direction: column;
+
+  padding: 0;
+  margin: 0;
+  display: contents;
+
+  .cake-full-width {
+    width: 100%;
+    .mat-form-field {
+      width: 100%;
+    }
+
+    td {
+      text-align: center;
+      padding: 14px 4px;
+    }
+  }
+
+  mat-raised-button,
+  .btn-full-w {
+    width: calc(50% - 2px);
+    margin: 2px 2px 2px 0;
+  }
+}
+
+.myform-wrapper {
+  margin: 50px;
+  width: 350px;
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+
+    button {
+      width: 30%;
+    }
+  }
+}
+
+.cake-img {
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .mat-toolbar-single-row {
+    height: auto !important;
+    background: transparent;
+
+    button {
+      width: 30%;
+    }
+  }
+
+  width: 100%;
+  .mat-form-field-infix {
+    width: 100%;
+  }
+  #fileUpload {
+    position: absolute;
+    z-index: 9;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    cursor: pointer;
+  }
+}

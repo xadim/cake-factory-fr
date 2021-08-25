@@ -1,0 +1,113 @@
+<form [formGroup]="cakeForm" class="form-dialog" *ngIf="!cake.id">
+  <div mat-dialog-content>
+    <h2>Cake Factory.</h2>
+
+    <table class="cake-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field>
+            <mat-label>Enter Name (required)</mat-label>
+            <input matInput type="text" formControlName="nameFormControl" />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <mat-label>yum Factor (required)</mat-label>
+            <input
+              matInput
+              maxlength="1"
+              min="1"
+              max="5"
+              type="number"
+              formControlName="yumFactorFormControl"
+            />
+            <mat-hint align="end">1 ≤ YumFactor ≤ 5</mat-hint>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p>
+      <mat-form-field class="cake-full-width" appearance="fill">
+        <mat-label>Comment</mat-label>
+        <textarea
+          matInput
+          maxlength="200"
+          min="0"
+          max="200"
+          type="text"
+          formControlName="commentFormControl"
+        ></textarea>
+      </mat-form-field>
+    </p>
+    <mat-form-field class="cake-img">
+      <mat-label>Image</mat-label>
+      <div>
+        <mat-toolbar>
+          <input matInput formControlName="filenameFormControl" readonly />
+          <button mat-flat-button color="primary">Browse</button>
+        </mat-toolbar>
+        <input
+          type="file"
+          #UploadFileInput
+          id="fileUpload"
+          name="fileUpload"
+          accept="image/*"
+          (change)="fileChangeEvent($event)"
+        />
+      </div>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-button
+      [mat-dialog-close]="1"
+      cdkFocusInitial
+      (click)="createCake()"
+      [disabled]="!cakeForm.valid"
+      mat-raised-button
+      type="submit"
+      color="primary"
+      class="btn-full-w"
+    >
+      CREATE
+    </button>
+    <button
+      mat-button
+      mat-raised-button
+      (click)="onNoClick()"
+      class="btn-full-w"
+    >
+      CANCEL
+    </button>
+  </div>
+</form>
+
+<!-- <div class="product-details" *ngIf="cake.id">
+  <img src="{{ cake.imageUrl }}" alt="" />
+  <h2>{{ cake.name }}</h2>
+  <p>
+    {{ cake.yumFactor }}
+  </p>
+  <div class="comment">
+    {{ cake.comment }}
+  </div>
+</div> -->
+
+<mat-card class="page-details-card" *ngIf="cake.id">
+  <!-- <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Shiba Inu</mat-card-title>
+    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+  </mat-card-header> -->
+  <img mat-card-image src="{{ cake.imageUrl }}" alt="{{ cake.name }}" />
+  <mat-card-content>
+    <p>
+      {{ cake.comment }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

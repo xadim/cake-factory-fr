@@ -1,0 +1,143 @@
+<div class="container">
+  <mat-progress-bar
+    class="example-margin"
+    [color]="color"
+    [mode]="mode"
+    [value]="value"
+    [bufferValue]="bufferValue"
+    *ngIf="buffering"
+  >
+  </mat-progress-bar>
+  <div *ngIf="message" class="success">
+    {{ message }}
+  </div>
+  <div *ngIf="deletionMsg" class="error">
+    <mat-error>{{ deletionMsg }}</mat-error>
+  </div>
+
+  <div class="push">
+    <div class="left">
+      <button mat-raised-button (click)="addNewCake()">
+        New Cake
+        <span class="mat-button-wrapper"
+          ><mat-icon
+            role="img"
+            class="mat-icon notranslate material-icons mat-icon-no-color"
+            aria-hidden="true"
+            data-mat-icon-type="font"
+            >add</mat-icon
+          ></span
+        >
+      </button>
+    </div>
+
+    <div class="right" *ngIf="productDetailsPage">
+      <button mat-raised-button routerLink="/">
+        <span class="mat-button-wrapper"
+          ><mat-icon
+            role="img"
+            class="mat-icon notranslate material-icons mat-icon-no-color"
+            aria-hidden="true"
+            data-mat-icon-type="font"
+            >arrow_back_ios_new</mat-icon
+          ></span
+        >
+        Back
+      </button>
+    </div>
+  </div>
+
+  <div class="data-grid" *ngIf="!productDetailsPage && cakes.length > 0">
+    <mat-grid-list
+      cols="3"
+      rowHeight="320px"
+      [gutterSize]="'40px'"
+      class="cards"
+    >
+      <mat-grid-tile *ngFor="let cake of cakes.slice(0, sliceNumber)">
+        <div class="card-block">
+          <img
+            src="{{ imageBuilder(cake.imageUrl, 'thumbnail') }}"
+            class="cld-responsive"
+            alt="{{ cake.name }}"
+          />
+          <div class="card-cnt">
+            <h2>{{ cake.name }}</h2>
+            <div class="push">
+              <div class="left">
+                <button
+                  mat-raised-button
+                  class="view-details-btn"
+                  routerLink="/cake/{{ cake._id }}"
+                >
+                  View Details
+                </button>
+              </div>
+              <div class="right">
+                <button
+                  mat-icon-button
+                  color="warn"
+                  class="remove"
+                  (click)="removeCake(cake._id)"
+                  aria-label="Example icon button with a heart icon"
+                >
+                  <mat-icon>delete_forever</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-divider class="grid-divider"></mat-divider>
+
+    <button
+      mat-raised-button
+      (click)="showMore()"
+      *ngIf="sliceNumber < cakes.length"
+    >
+      Load More
+      <span class="mat-button-wrapper"
+        ><mat-icon
+          role="img"
+          class="mat-icon notranslate material-icons mat-icon-no-color"
+          aria-hidden="true"
+          data-mat-icon-type="font"
+          >read_more</mat-icon
+        ></span
+      >
+    </button>
+  </div>
+
+  <div *ngIf="productDetailsPage">
+    <figure class="pizza">
+      <div class="pizza__hero">
+        <img
+          src="{{ imageBuilder(cake.imageUrl, 'hd') }}"
+          alt="{{ cake.name }}"
+          class="pizza__img"
+        />
+      </div>
+      <div class="pizza__content">
+        <div class="pizza__title">
+          <h1 class="pizza__heading">🧁 {{ cake.name }}</h1>
+          <!-- <div class="pizza__tag pizza__tag--1">#vegetarian</div>
+          <div class="pizza__tag pizza__tag--2">#italian</div> -->
+        </div>
+        <p class="pizza__description">
+          {{ cake.comment }}
+        </p>
+        <div class="pizza__details">
+          <p class="pizza__detail">
+            <span class="emoji">😋 </span>{{ cake.yumFactor }} yumFactor
+          </p>
+          <!-- <p class="pizza__detail"><span class="emoji">⏱ </span>30min.</p> -->
+          <!-- <p class="pizza__detail"><span class="emoji">⭐️ </span>4.7 / 5</p> -->
+        </div>
+      </div>
+
+      <!-- <div class="pizza__price">$11.99</div> -->
+    </figure>
+  </div>
+</div>
