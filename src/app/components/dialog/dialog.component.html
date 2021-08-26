@@ -1,7 +1,6 @@
 <form [formGroup]="cakeForm" class="form-dialog" *ngIf="!cake.id">
   <div mat-dialog-content>
-    <h2>Cake Factory.</h2>
-
+    <h2>Cake Factory</h2>
     <table class="cake-full-width" cellspacing="0">
       <tr>
         <td>
@@ -82,32 +81,3 @@
     </button>
   </div>
 </form>
-
-<!-- <div class="product-details" *ngIf="cake.id">
-  <img src="{{ cake.imageUrl }}" alt="" />
-  <h2>{{ cake.name }}</h2>
-  <p>
-    {{ cake.yumFactor }}
-  </p>
-  <div class="comment">
-    {{ cake.comment }}
-  </div>
-</div> -->
-
-<mat-card class="page-details-card" *ngIf="cake.id">
-  <!-- <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header> -->
-  <img mat-card-image src="{{ cake.imageUrl }}" alt="{{ cake.name }}" />
-  <mat-card-content>
-    <p>
-      {{ cake.comment }}
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card>

@@ -87,19 +87,17 @@ body {
 }
 
 .push {
+  display: flex;
+  align-items: center;
   .left {
-    width: 85%;
+    width: 80%;
     display: inline-block;
     text-align: left;
   }
 
   .right {
-    width: 15%;
+    width: 20%;
     display: inline-block;
     text-align: right;
   }
-}
-
-.page-details-card {
-  padding: 0 !important;
 }

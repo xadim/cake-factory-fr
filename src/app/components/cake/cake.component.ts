@@ -6,6 +6,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DatasharingService } from '../../services/datasharing.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { orderBy, round } from 'lodash';
 
 @Component({
   selector: 'app-cake',
@@ -64,6 +65,8 @@ export class CakeComponent implements OnInit {
   getCakes() {
     this.cakeSrv.getCakes().subscribe((data: any) => {
       if (data) {
+        console.log(data);
+
         this.cakes = data;
       }
     });
@@ -92,7 +95,7 @@ export class CakeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result === 1) {
+      if (result !== 1) {
         this.buffering = false;
       }
     });
@@ -148,10 +151,30 @@ export class CakeComponent implements OnInit {
     this.message = msg;
     setTimeout(() => {
       this.message = '';
-    }, 3000);
+    }, 5000);
   }
 
+  /**
+   * Show more cakes
+   */
   showMore() {
     this.sliceNumber = this.sliceNumber + 6;
+  }
+
+  /**
+   * sort cake grid
+   * @param event
+   */
+  sorter(event: any) {
+    console.log(event.value);
+    if (event.value === 'asc') {
+      this.cakes = orderBy(this.cakes, ['name'], ['asc']);
+    } else if (event.value === 'desc') {
+      this.cakes = orderBy(this.cakes, ['name'], ['desc']);
+    } else if (event.value === 'old') {
+      this.cakes = orderBy(this.cakes, ['createdDate'], ['asc']);
+    } else {
+      this.cakes = orderBy(this.cakes, ['createdDate'], ['desc']);
+    }
   }
 }

@@ -31,8 +31,19 @@
       </button>
     </div>
 
-    <div class="right" *ngIf="productDetailsPage">
-      <button mat-raised-button routerLink="/">
+    <div class="right">
+      <div *ngIf="!productDetailsPage">
+        <mat-form-field>
+          <mat-label>Choose one</mat-label>
+          <mat-select (selectionChange)="sorter($event)">
+            <mat-option value="new">Newest First</mat-option>
+            <mat-option value="old">Oldest First</mat-option>
+            <mat-option value="asc">Alpha ASC</mat-option>
+            <mat-option value="desc">Alpha DESC</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button routerLink="/" *ngIf="productDetailsPage">
         <span class="mat-button-wrapper"
           ><mat-icon
             role="img"

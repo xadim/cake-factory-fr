@@ -15,6 +15,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
 
 import { CakeComponent } from './components/cake/cake.component';
 import { DialogComponent } from './components/dialog/dialog.component';
@@ -48,6 +49,7 @@ import { CakeService } from './services/cake.service';
     HttpClientModule,
     MatCardModule,
     MatProgressBarModule,
+    MatSelectModule,
   ],
   providers: [CakeService],
   bootstrap: [AppComponent],

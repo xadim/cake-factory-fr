@@ -25,24 +25,6 @@
   }
 }
 
-.myform-wrapper {
-  margin: 50px;
-  width: 350px;
-
-  .mat-form-field {
-    width: 100%;
-  }
-
-  .mat-toolbar-single-row {
-    height: auto !important;
-    background: transparent;
-
-    button {
-      width: 30%;
-    }
-  }
-}
-
 .cake-img {
   .mat-form-field {
     width: 100%;
@@ -61,6 +43,7 @@
   .mat-form-field-infix {
     width: 100%;
   }
+
   #fileUpload {
     position: absolute;
     z-index: 9;
