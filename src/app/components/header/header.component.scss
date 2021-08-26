@@ -1,9 +1,13 @@
-.loggo-font {
-  font-family: "Arizonia", cursive;
-  font-size: 1.7em;
-  padding: 4px;
-  color: #5fd1db;
-  font-weight: 800;
+.logo {
+  align-items: center;
+  display: flex;
+  .loggo-font {
+    font-family: "Arizonia", cursive;
+    font-size: 1.4em;
+    padding: 7px 4px 0;
+    color: #5fd1db;
+    font-weight: 800;
+  }
 }
 
 .menu-spacer {
