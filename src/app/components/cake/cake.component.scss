@@ -1,9 +1,6 @@
 // Variables
 $color-default: #240046;
 $color-accent: #5fd1db;
-$box-shadow: 0 4px 8px rgba(black, 0.25);
-$transition-settings: 0.25s ease-out;
-
 .cake-form {
   min-width: 150px;
   max-width: 500px;
@@ -129,7 +126,7 @@ $transition-settings: 0.25s ease-out;
   margin: 14px 0;
 }
 
-.pizza {
+._cake {
   // max-width: 800px;
   margin: 7px 0;
   overflow: hidden;
@@ -139,16 +136,16 @@ $transition-settings: 0.25s ease-out;
   align-items: stretch;
 }
 
-.pizza__hero {
+._cake__hero {
   flex: 0 0 45%;
 }
 
-.pizza__img {
+._cake__img {
   width: 100%;
   display: block;
 }
 
-.pizza__content {
+._cake__content {
   flex: 1;
   background: #fff;
   padding: 35px 30px;
@@ -157,7 +154,7 @@ $transition-settings: 0.25s ease-out;
   flex-direction: column;
 }
 
-.pizza__price {
+._cake__price {
   flex: 0 1 50px;
   background: linear-gradient(to bottom, #67b26f, #4ca2cd);
   writing-mode: vertical-rl;
@@ -168,18 +165,18 @@ $transition-settings: 0.25s ease-out;
   justify-content: center;
 }
 
-.pizza__title {
+._cake__title {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.pizza__heading {
+._cake__heading {
   font-size: 20px;
   margin-right: auto;
 }
 
-.pizza__tag {
+._cake__tag {
   font-size: 10px;
   text-transform: uppercase;
   color: white;
@@ -188,23 +185,23 @@ $transition-settings: 0.25s ease-out;
   margin-left: 7px;
 }
 
-.pizza__tag--1 {
+._cake__tag--1 {
   background-color: #67b26f;
 }
-.pizza__tag--2 {
+._cake__tag--2 {
   background-color: #4ca2cd;
 }
 
-.pizza__description {
+._cake__description {
   font-size: 14px;
 }
 
-.pizza__details {
+._cake__details {
   display: flex;
   margin-top: auto;
 }
 
-.pizza__detail {
+._cake__detail {
   font-size: 15px;
   text-transform: uppercase;
   margin-right: 20px;

@@ -35,8 +35,6 @@ export class DialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.cake = this.data;
-    console.log(this.cake.id);
-
     this.cakeForm = this.fb.group({
       nameFormControl: ['Chocolate Bomb', [Validators.required]],
       commentFormControl: ['Best Chocolate Cake Ever.', [Validators.required]],
@@ -52,7 +50,6 @@ export class DialogComponent implements OnInit {
 
   createCake(): void {
     const formValue = this.cakeForm.value;
-
     let imageUrl = {
       filename: this.url[0].filename,
       filetype: this.url[0].filetype,
@@ -74,26 +71,24 @@ export class DialogComponent implements OnInit {
     }
   }
 
+  /**
+   * creates the image object
+   * @param event
+   */
   fileChangeEvent(event: any) {
     if (event.target.files && event.target.files[0]) {
       const filesAmount = event.target.files.length;
-      // this.formData = new FormData();
       for (let i = 0; i < filesAmount; i++) {
         const reader = new FileReader();
         reader.onload = (event2: any) => {
-          // if (this.urls.length < 6) {
           const img = 'image_' + this.url.length;
           const filename = event.target.files[i].name.replace(' ', '-');
-          // Create the preview array
-          console.log(event2.target.result);
-
           this.url.push({
             url: event2.target.result,
             filename: filename,
             filetype: event.target.files[i].type,
             img: img,
           });
-          // }
           this.cakeForm
             .get('imageFormControl')!
             .setValue(event.target.files[i]);

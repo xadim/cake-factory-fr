@@ -111,33 +111,27 @@
   </div>
 
   <div *ngIf="productDetailsPage">
-    <figure class="pizza">
-      <div class="pizza__hero">
+    <figure class="_cake">
+      <div class="_cake__hero">
         <img
           src="{{ imageBuilder(cake.imageUrl, 'hd') }}"
           alt="{{ cake.name }}"
-          class="pizza__img"
+          class="_cake__img"
         />
       </div>
-      <div class="pizza__content">
-        <div class="pizza__title">
-          <h1 class="pizza__heading">🧁 {{ cake.name }}</h1>
-          <!-- <div class="pizza__tag pizza__tag--1">#vegetarian</div>
-          <div class="pizza__tag pizza__tag--2">#italian</div> -->
+      <div class="_cake__content">
+        <div class="_cake__title">
+          <h1 class="_cake__heading">🧁 {{ cake.name }}</h1>
         </div>
-        <p class="pizza__description">
+        <p class="_cake__description">
           {{ cake.comment }}
         </p>
-        <div class="pizza__details">
-          <p class="pizza__detail">
+        <div class="_cake__details">
+          <p class="_cake__detail">
             <span class="emoji">😋 </span>{{ cake.yumFactor }} yumFactor
           </p>
-          <!-- <p class="pizza__detail"><span class="emoji">⏱ </span>30min.</p> -->
-          <!-- <p class="pizza__detail"><span class="emoji">⭐️ </span>4.7 / 5</p> -->
         </div>
       </div>
-
-      <!-- <div class="pizza__price">$11.99</div> -->
     </figure>
   </div>
 </div>

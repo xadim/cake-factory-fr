@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url("https://fonts.googleapis.com/css2?family=Arizonia&family=Urbanist:wght@100;200&display=swap");
+// Variables
+$color-default: #240046;
+$color-accent: #5fd1db;
 
 html,
 body {
@@ -24,7 +27,7 @@ body {
   }
   a {
     font-family: "Urbanist", sans-serif;
-    color: #1976d2;
+    color: $color-accent;
     text-decoration: none;
     &:visited,
     &:hover {
@@ -45,7 +48,7 @@ body {
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #1976d2;
+    background-color: $color-accent;
     color: white;
     font-weight: 600;
 
@@ -74,7 +77,7 @@ body {
       color: #000;
       font-weight: 800;
       padding: 7px;
-      background-color: #5fd1db;
+      background-color: $color-accent;
       margin-bottom: 7px;
     }
   }

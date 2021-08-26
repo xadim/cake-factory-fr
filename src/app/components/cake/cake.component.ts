@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressBarMode } from '@angular/material/progress-bar';
 import { CakeService } from '../../services/cake.service';
@@ -6,7 +6,6 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DatasharingService } from '../../services/datasharing.service';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { isEmpty } from 'lodash';
 
 @Component({
   selector: 'app-cake',
@@ -31,7 +30,6 @@ export class CakeComponent implements OnInit {
   sliceNumber = 6;
 
   constructor(
-    private renderer: Renderer2,
     private cakeSrv: CakeService,
     private dataSrv: DatasharingService,
     public dialog: MatDialog,
@@ -42,10 +40,8 @@ export class CakeComponent implements OnInit {
   ngOnInit(): void {
     this.dataSrv.sharedData.subscribe((data: any) => {
       if (data) {
-        console.log(data);
         if (data.message) {
-          this.setSuccessMessage;
-          data.message;
+          this.setSuccessMessage(data.message);
         }
         this.cakes = data;
         this.getCakes();
@@ -54,10 +50,7 @@ export class CakeComponent implements OnInit {
 
     this.route.params.subscribe((params: any) => {
       if (params.id && typeof params.id !== 'undefined') {
-        console.log(params);
         this.productDetailsPage = true;
-        console.log(this.productDetailsPage);
-
         this.getCake(params.id);
       } else {
         this.getCakes();
@@ -65,18 +58,23 @@ export class CakeComponent implements OnInit {
     });
   }
 
+  /**
+   * Returns all the cakes
+   */
   getCakes() {
     this.cakeSrv.getCakes().subscribe((data: any) => {
-      console.log(data);
       if (data) {
         this.cakes = data;
       }
     });
   }
 
+  /**
+   * Retunrs a new cake object if exists
+   * @param id
+   */
   getCake(id: String) {
     this.cakeSrv.getCake(id).subscribe((cake: any) => {
-      console.log(cake);
       if (cake.success) {
         this.cake = cake.data;
       }
@@ -84,7 +82,7 @@ export class CakeComponent implements OnInit {
   }
 
   /**
-   * Change the robot's Position
+   * Create a cake
    */
   addNewCake(): void {
     this.buffering = true;
@@ -94,33 +92,26 @@ export class CakeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.buffering = false;
+      if (result === 1) {
+        this.buffering = false;
+      }
     });
   }
 
+  /**
+   * Opens a new page with the cake ID
+   * @param cake
+   */
   viewCake(cake: any): void {
     this.router.navigate(['/', cake._id]);
-
-    // this.cake = {
-    //   id: cake._id,
-    //   name: cake.name,
-    //   comment: cake.comment,
-    //   yumFactor: cake.yumFactor,
-    //   imageUrl: this.imageBuilder(cake.imageUrl, 'HD'),
-    // };
-
-    // this.dialog.open(DialogComponent, {
-    //   width: '100%',
-    //   data: {
-    //     id: cake._id,
-    //     name: cake.name,
-    //     comment: cake.comment,
-    //     yumFactor: cake.yumFactor,
-    //     imageUrl: this.imageBuilder(cake.imageUrl, 'HD'),
-    //   },
-    // });
   }
 
+  /**
+   * Build the image object with the correct size
+   * @param imageUrl
+   * @param s
+   * @returns
+   */
   imageBuilder(imageUrl: String, s: String) {
     const size =
       s === 'thumbnail' ? 'c_fill,w_300,h_166' : 'c_fill,w_1052,h_700';
@@ -133,9 +124,12 @@ export class CakeComponent implements OnInit {
     return result;
   }
 
+  /**
+   * Deleting a cake
+   * @param id
+   */
   removeCake(id: String) {
     this.cakeSrv.delete(id).subscribe((data: any) => {
-      console.log(data);
       if (data.success) {
         this.getCakes();
         this.deletionMsg = data.message;
@@ -149,15 +143,8 @@ export class CakeComponent implements OnInit {
   /**
    * set standard guide message for users to start at the right point
    */
-  setErrorMessage() {
-    this.errorMessage =
-      'Please press PLACE to put the robot on the platform first.';
-    setTimeout(() => {
-      this.errorMessage = '';
-    }, 3000);
-  }
-
   setSuccessMessage(msg: string) {
+    this.buffering = false;
     this.message = msg;
     setTimeout(() => {
       this.message = '';
