@@ -14,8 +14,6 @@ import { orderBy, round } from 'lodash';
   styleUrls: ['./cake.component.scss'],
 })
 export class CakeComponent implements OnInit {
-  showPlayground = false;
-  showReport = false;
   cakes: any = [];
   cake: any = [];
   message = '';
@@ -42,9 +40,8 @@ export class CakeComponent implements OnInit {
     this.dataSrv.sharedData.subscribe((data: any) => {
       if (data) {
         if (data.message) {
-          this.setSuccessMessage(data.message);
+          this.setMessage(data);
         }
-        this.cakes = data;
         this.getCakes();
       }
     });
@@ -65,8 +62,6 @@ export class CakeComponent implements OnInit {
   getCakes() {
     this.cakeSrv.getCakes().subscribe((data: any) => {
       if (data) {
-        console.log(data);
-
         this.cakes = data;
       }
     });
@@ -144,13 +139,22 @@ export class CakeComponent implements OnInit {
   }
 
   /**
-   * set standard guide message for users to start at the right point
+   * set standard guide message for users
    */
-  setSuccessMessage(msg: string) {
+  setMessage(data: any) {
     this.buffering = false;
-    this.message = msg;
+    if (data.success) {
+      this.message = data.msg;
+    } else {
+      // parse error message
+      const errors = data.data.errors;
+      for (const error of Object.keys(errors)) {
+        this.deletionMsg += errors[error][0];
+      }
+    }
     setTimeout(() => {
       this.message = '';
+      this.deletionMsg = '';
     }, 5000);
   }
 
