@@ -30,10 +30,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Screenshots
 
-<!-- ![alt text](assets/screenshots/cake-factory-screenshot-new.png)
-![alt text](assets/screenshots/cake-factory-screenshot-grid.png) -->
+![Cake Factory](assets/screenshots/cake-factory-screenshot-grid.png?raw=true)
 
-![Cake Factory](https://github.com/xadim/cake-factory-fr/blob/main/assets/screenshots/cake-factory-screenshot-grid.png?raw=true)
+<!-- ![alt text](assets/screenshots/cake-factory-screenshot-new.png)
+
+<!-- ![Cake Factory](https://github.com/xadim/cake-factory-fr/blob/main/assets/screenshots/cake-factory-screenshot-grid.png?raw=true) -->
 
 ## TODO / Features
 
