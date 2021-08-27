@@ -30,7 +30,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Screenshots
 
-![Cake Factory](assets/screenshots/cake-factory-screenshot-grid.png?raw=true)
+![Cake Factory](src/assets/screenshots/cake-factory-screenshot-grid.png?raw=true)
 
 <!-- ![alt text](assets/screenshots/cake-factory-screenshot-new.png)
 
