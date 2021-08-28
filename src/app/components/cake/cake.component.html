@@ -42,7 +42,7 @@
     <mat-grid-tile class="has-text-aligned-right">
       <div *ngIf="!productDetailsPage && cakes.length > 0">
         <mat-form-field>
-          <mat-label>Choose one</mat-label>
+          <mat-label>Sort by</mat-label>
           <mat-select (selectionChange)="sorter($event)">
             <mat-option value="new">Newest First</mat-option>
             <mat-option value="old">Oldest First</mat-option>

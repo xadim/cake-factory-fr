@@ -47,8 +47,11 @@ $color-accent: #5fd1db;
   }
 }
 
-.mat-fab .mat-button-wrapper {
+.mat-button-wrapper {
   padding: 0;
+  mat-icon {
+    margin-top: -5px;
+  }
 }
 
 .data-grid {
