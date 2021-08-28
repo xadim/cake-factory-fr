@@ -15,8 +15,8 @@
     <mat-error>{{ deletionMsg }}</mat-error>
   </div>
 
-  <div class="push">
-    <div class="left">
+  <mat-grid-list cols="4" rowHeight="40px" [gutterSize]="'40px'" class="cards">
+    <mat-grid-tile>
       <button mat-raised-button (click)="addNewCake()">
         New Cake
         <span class="mat-button-wrapper"
@@ -29,9 +29,16 @@
           ></span
         >
       </button>
-    </div>
-
-    <div class="right">
+    </mat-grid-tile>
+    <mat-grid-tile> </mat-grid-tile>
+    <mat-grid-tile
+      style="margin-top: 14px; font-weight: bolder"
+      class="has-text-aligned-right"
+    >
+      {{ recordFirstPages }} to {{ currentlyDisplayedRecords }} out of
+      {{ cakes.length }} cakes
+    </mat-grid-tile>
+    <mat-grid-tile class="has-text-aligned-right">
       <div *ngIf="!productDetailsPage">
         <mat-form-field>
           <mat-label>Choose one</mat-label>
@@ -55,8 +62,8 @@
         >
         Back
       </button>
-    </div>
-  </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 
   <div class="data-grid" *ngIf="!productDetailsPage && cakes.length > 0">
     <mat-grid-list

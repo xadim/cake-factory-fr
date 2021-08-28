@@ -27,6 +27,8 @@ export class CakeComponent implements OnInit {
   bufferValue = 75;
   productDetailsPage: boolean = false;
   sliceNumber = 6;
+  recordFirstPages = 0;
+  currentlyDisplayedRecords = 0;
 
   constructor(
     private cakeSrv: CakeService,
@@ -63,6 +65,9 @@ export class CakeComponent implements OnInit {
     this.cakeSrv.getCakes().subscribe((data: any) => {
       if (data) {
         this.cakes = data;
+        this.recordFirstPages = this.cakes.length > 1 ? 1 : 0;
+        this.currentlyDisplayedRecords =
+          this.cakes.length > 6 ? 6 : this.cakes.length;
       }
     });
   }
@@ -163,6 +168,10 @@ export class CakeComponent implements OnInit {
    */
   showMore() {
     this.sliceNumber = this.sliceNumber + 6;
+    this.currentlyDisplayedRecords =
+      this.sliceNumber < this.cakes.length
+        ? this.sliceNumber
+        : this.cakes.length;
   }
 
   /**
