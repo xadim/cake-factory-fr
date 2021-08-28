@@ -1,6 +1,5 @@
 <div class="container">
   <mat-progress-bar
-    class="example-margin"
     [color]="color"
     [mode]="mode"
     [value]="value"
@@ -35,11 +34,13 @@
       style="margin-top: 14px; font-weight: bolder"
       class="has-text-aligned-right"
     >
-      {{ recordFirstPages }} to {{ currentlyDisplayedRecords }} out of
-      {{ cakes.length }} cakes
+      <div *ngIf="!productDetailsPage && cakes.length > 0">
+        {{ recordFirstPages }} to {{ currentlyDisplayedRecords }} out of
+        {{ cakes.length }} cakes
+      </div>
     </mat-grid-tile>
     <mat-grid-tile class="has-text-aligned-right">
-      <div *ngIf="!productDetailsPage">
+      <div *ngIf="!productDetailsPage && cakes.length > 0">
         <mat-form-field>
           <mat-label>Choose one</mat-label>
           <mat-select (selectionChange)="sorter($event)">
@@ -64,6 +65,16 @@
       </button>
     </mat-grid-tile>
   </mat-grid-list>
+
+  <div *ngIf="!productDetailsPage && cakes.length === 0" class="spinner-cakes">
+    <mat-progress-bar
+      [color]="color"
+      [mode]="mode"
+      [value]="value"
+      [bufferValue]="bufferValue"
+    >
+    </mat-progress-bar>
+  </div>
 
   <div class="data-grid" *ngIf="!productDetailsPage && cakes.length > 0">
     <mat-grid-list
