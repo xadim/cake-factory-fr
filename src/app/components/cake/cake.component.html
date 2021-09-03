@@ -143,6 +143,7 @@
     <figure class="_cake">
       <div class="_cake__hero">
         <img
+          *ngIf="cake.imageUrl"
           src="{{ imageBuilder(cake.imageUrl, 'hd') }}"
           alt="{{ cake.name }}"
           class="_cake__img"

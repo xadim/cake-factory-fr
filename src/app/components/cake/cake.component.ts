@@ -116,6 +116,10 @@ export class CakeComponent implements OnInit {
    * @returns
    */
   imageBuilder(imageUrl: String, s: String) {
+    if (typeof imageUrl === 'undefined') {
+      imageUrl =
+        'https://res.cloudinary.com/hadim/image/upload/v1630685664/cake-flower-image_product-placeholder.png';
+    }
     const size =
       s === 'thumbnail' ? 'c_fill,w_300,h_166' : 'c_fill,w_1052,h_700';
     const search = 'upload';
@@ -179,7 +183,6 @@ export class CakeComponent implements OnInit {
    * @param event
    */
   sorter(event: any) {
-    console.log(event.value);
     if (event.value === 'asc') {
       this.cakes = orderBy(this.cakes, ['name'], ['asc']);
     } else if (event.value === 'desc') {

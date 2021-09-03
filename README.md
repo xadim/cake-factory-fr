@@ -2,7 +2,7 @@
 
 ===================
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
+This project is a Cake Factory frontend Angular application powered with respect of the Material Design Principles. It was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
 
 ## Development server
 
